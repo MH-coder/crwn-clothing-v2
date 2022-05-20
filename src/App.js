@@ -11,7 +11,7 @@ import CheckOut from './routes/checkout/checkout.component';
 
 import {
   onAuthStateChangedListener,
-  createUserDocumentFromAuth
+  createUserDocumentFromAuth,
 } from './utils/firebase/firebase.utils';
 
 import { setCurrentUser } from './store/user/user.action';
