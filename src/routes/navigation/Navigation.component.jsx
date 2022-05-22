@@ -3,6 +3,7 @@ import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
 
 import { useSelector } from 'react-redux'
 import { currentUserSelector } from '../../store/user/user.selectors';
+import { isCartOpenSelector } from '../../store/cart/cart.selectors';
 
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
@@ -16,7 +17,8 @@ import './navigation.styles.scss'
 
 const Navigation = () => {
     const currentUser = useSelector(currentUserSelector)
-    const { isCartOpen } = useContext(CartContext)
+    const isCartOpen = useSelector(isCartOpenSelector)
+    // const { isCartOpen } = useContext(CartContext)
 
     return (
         <>
