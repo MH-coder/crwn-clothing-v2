@@ -51,35 +51,35 @@ const deleteCartItem = (cartItems, cartItemToDelete) => {
 // ACTIIONS
 export const setIsCartOpen = (bool) => ({ type: CART_ACTIONS_TYPES.SET_IS_CART_OPEN, payload: bool })
 
-const updateCartItemsReducer = (newCartItems) => {
-    const newCartitemsCount = newCartItems.reduce((count, cartItem) => {
-        return count + cartItem.quantity
-    }, 0)
+// const updateCartItemsReducer = (newCartItems) => {
+//     const newCartitemsCount = newCartItems.reduce((count, cartItem) => {
+//         return count + cartItem.quantity
+//     }, 0)
 
-    const newTotalPrice = newCartItems.reduce((total, cartItem) => {
-        return total + (cartItem.quantity * cartItem.price);
-    }, 0)
+//     const newTotalPrice = newCartItems.reduce((total, cartItem) => {
+//         return total + (cartItem.quantity * cartItem.price);
+//     }, 0)
 
-    return ({
-        type: CART_ACTIONS_TYPES.SET_CART_ITEMS, payload: {
-            cartItems: newCartItems,
-            cartItemsCount: newCartitemsCount,
-            total: newTotalPrice
-        }
-    })
-}
+//     return ({
+//         type: CART_ACTIONS_TYPES.SET_CART_ITEMS, payload: {
+//             cartItems: newCartItems,
+//             cartItemsCount: newCartitemsCount,
+//             total: newTotalPrice
+//         } 
+//     })
+// }
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove)
-    return updateCartItemsReducer(newCartItems)
+    return { type: CART_ACTIONS_TYPES.SET_CART_ITEMS, payload: newCartItems }
 }
 
 export const addItemToCart = (cartItems, productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd)
-    return updateCartItemsReducer(newCartItems)
+    return { type: CART_ACTIONS_TYPES.SET_CART_ITEMS, payload: newCartItems }
 }
 
 export const deleteItemFromCart = (cartItems, cartItemToDelete) => {
     const newCartItems = deleteCartItem(cartItems, cartItemToDelete)
-    return updateCartItemsReducer(newCartItems)
+    return { type: CART_ACTIONS_TYPES.SET_CART_ITEMS, payload: newCartItems }
 }

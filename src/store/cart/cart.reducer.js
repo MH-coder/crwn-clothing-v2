@@ -14,7 +14,7 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         case CART_ACTIONS_TYPES.SET_CART_ITEMS:
             return {
                 ...state,
-                ...payload
+                cartItems: payload
             }
 
         default:
@@ -25,7 +25,5 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
 
 const INITIAL_STATE = {
     isCartOpen: false,
-    cartItems: [],
-    cartItemsCount: 0,
-    total: 0
+    cartItems: []
 }
